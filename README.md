@@ -40,11 +40,20 @@ Before you begin, ensure you have met the following requirements:
 ## Usage
 
 1. **Run the Flask program**:
+
+It contains 3 functions: 
+- initdb(): creates the database
+- a POST route to /metrics, which adds the metrics to the DB
+- a GET route to /api/metrics which returns the most recent value in the DB
+
     ```
     python app.py
     ```
 
 2. **Run the Metrics populator**:
+
+   This sends a POST request to the metrics API which updates values every 5 seconds
+
     ```
     python metrics_populator.py
     ```
