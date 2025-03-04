@@ -26,10 +26,44 @@ Before you begin, ensure you have met the following requirements:
    ```
 
 
-1. **Set Up a Virtual Environment (optional but recommended)**:
-```
-python3 -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate`
-```
+2. **Set Up a Virtual Environment (optional but recommended)**:
+    ```
+    python3 -m venv env
+    source env/bin/activate  # On Windows use `env\Scripts\activate`
+    ```
 
+3. **Install Required Packages**:
+    ```
+    pip install -r requirements.txt
+    ```
 
+## Usage
+
+1. **Run the Flask program**:
+    ```
+    python app.py
+    ```
+
+2. **Run the Metrics populator**:
+    ```
+    python metrics_populator.py
+    ```
+
+3. **Access the Dashboard**:
+Open your web browser and navigate to http://127.0.0.1:5000/metrics to view the dashboard.
+
+## Project Structure
+
+```
+.
+├── app.py
+├── metrics_populator.py
+├── static/
+│   └── scripts/
+│       └── metrics.js
+├── templates/
+│   └── metrics.html
+├── requirements.txt
+├── README.md
+└── database.db
+```
