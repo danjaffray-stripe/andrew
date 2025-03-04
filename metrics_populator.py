@@ -18,7 +18,7 @@ def gather_metrics():
 
 def send_metrics():
     """Sends gathered metrics to the Flask server."""
-    url = 'http://localhost:5000/metrics'
+    url = 'https://danjaff.pythonanywhere.com/metrics'
     while True:
         metrics = gather_metrics()
         response = requests.post(url, json=metrics)
