@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Metrics</title>
-    <script>
-        function fetchMetrics() {
-            fetch('/api/metrics')
-                .then(response => response.json())
-                .then(data => {
-                    const metricsDiv = document.getElementById('metrics');
-                    metricsDiv.innerHTML = '';
-        
-                    if (data && data.cpu_temp !== undefined) {
-                        const metricElement = document.createElement('li');
-                        metricElement.textContent = `CPU Temp: ${data.cpu_temp}°C`;
-                        metricsDiv.appendChild(metricElement);
-                    } else {
-                        const errorElement = document.createElement('li');
-                        errorElement.textContent = 'No data available.';
-                        metricsDiv.appendChild(errorElement);
-                    }
-                })
-                .catch(error => console.error('Error fetching metrics:', error));
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <style>
+        body {
+            margin-top: 20px;
         }
-        
-        // Fetch metrics every 5 seconds
-        setInterval(fetchMetrics, 5000);
-        
-        // Fetch metrics on page load
-        window.onload = fetchMetrics;
-        
-    </script>
+    </style>
 </head>
 <body>
-    <h1>Metrics</h1>
-    <ul id="metrics"></ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Metrics Dashboard</a>
+    </nav>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        System Metrics
+                    </div>
+                    <div class="card-body">
+                        <ul id="metrics" class="list-group">
+                            <!-- Dynamically populated through JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include your custom JavaScript file -->
+    <script src="{{ url_for('static', filename='scripts/metrics.js') }}"></script>
 </body>
 </html>
