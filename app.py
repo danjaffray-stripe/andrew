@@ -37,7 +37,6 @@ def receive_metrics():
         return jsonify({"message": "Metrics received"}), 200
     return jsonify({"error": "Request must be JSON"}), 400
 
-
 @app.route('/api/metrics', methods=['GET'])
 def api_metrics():
     metric = None
@@ -52,9 +51,6 @@ def api_metrics():
 @app.route('/metrics', methods=['GET'])
 def display_metrics():
     return render_template('metrics.html')
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
